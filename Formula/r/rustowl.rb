@@ -15,7 +15,7 @@ class Rustowl < Formula
 
     system "rustup", "component", "add", "rust-src", "rustc-dev", "llvm-tools"
 
-    system "cargo", "install", "--path", ".", "--no-default-features", *std_cargo_args
+    system "cargo", "install", "--no-default-features", *std_cargo_args
 
     mkdir_p "rustowl-build-time-out"
     system "find", "target", "-type", "d", "-name", "rustowl-build-time-out", "-exec", "cp", "-r", "{}", "./", ";"
@@ -56,7 +56,6 @@ class Rustowl < Formula
   end
 
   test do
-    system "#{bin}/rustowl", "--version"
+    system bin/"rustowl", "--version"
   end
 end
-
