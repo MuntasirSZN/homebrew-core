@@ -9,6 +9,7 @@ class Xplanet < Formula
   no_autobump! because: :requires_manual_review
 
   bottle do
+    sha256                               arm64_tahoe:    "7496e485b462de4b286f4128d145dfc58aaba93237aafc36ec1c0138a740be46"
     sha256                               arm64_sequoia:  "1c5fb1f5235c56e1aa7f84415b49428ed1c92532b47697800982f01dcfb4d842"
     sha256                               arm64_sonoma:   "1092db3b7841f3a9e16d41baa7b4370ab212ec0523275e2b96cad8f2235873e7"
     sha256                               arm64_ventura:  "aa69c74fc48645353401ccfeb35f7bf0527b696f34523754e2c81077459bbc64"

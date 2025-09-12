@@ -14,6 +14,7 @@ class Valkey < Formula
 
   bottle do
     rebuild 1
+    sha256 cellar: :any,                 arm64_tahoe:   "229a7e5f052d0a07b5f3ee473412b6047c3ba5e07c4231c9be1413de16059a05"
     sha256 cellar: :any,                 arm64_sequoia: "520366e6260725ba358ee78eaac9e27a3172f6e0d788f0b6c02b5f880b297789"
     sha256 cellar: :any,                 arm64_sonoma:  "026c24be9de7fe02ead9d36a2a8d9ec57fecd7299330c215d599625d59e6492c"
     sha256 cellar: :any,                 arm64_ventura: "5310fc2432984d2357e8ee52bd7afa45a4ed64c0bf37c1aa10a94c04b4f01ebe"

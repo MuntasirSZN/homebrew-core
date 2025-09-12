@@ -18,6 +18,10 @@ class Xeol < Formula
   depends_on "go" => :build
 
   def install
+    # Turn off homebrew specific database checks
+    # Issue ref: https://github.com/xeol-io/xeol/issues/568
+    inreplace "xeol/db/curator.go", "isBrewTest == \"1\"", "isBrewTest == \"999\""
+
     ldflags = %W[
       -s -w
       -X main.version=#{version}

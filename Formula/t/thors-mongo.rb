@@ -28,15 +28,16 @@ class ThorsMongo < Formula
 
   def install
     ENV["COV"] = "gcov"
+    # Workaround for failure when building with Xcode std::from_chars
+    # src/Serialize/./StringInput.h:104:27: error: call to deleted function 'from_chars'
+    ENV.append_to_cflags "-DNO_STD_SUPPORT_FROM_CHAR_DOUBLE=1" if DevelopmentTools.clang_build_version == 1700
 
     system "./brew/init"
-
     system "./configure", "--disable-vera",
-                          "--prefix=#{prefix}",
                           "--disable-test-with-integration",
                           "--disable-test-with-mongo-query",
-                          "--disable-Mongo-Service"
-
+                          "--disable-Mongo-Service",
+                          *std_configure_args
     system "make"
     system "make", "install"
   end

@@ -3,20 +3,20 @@ class Awscli < Formula
 
   desc "Official Amazon AWS command-line interface"
   homepage "https://aws.amazon.com/cli/"
-  url "https://github.com/aws/aws-cli/archive/refs/tags/2.29.1.tar.gz"
-  sha256 "d2e61c84185f5ef4696d4c48e2a8b90377529410e0bbe86a9f3b133eac0b5ca0"
+  url "https://github.com/aws/aws-cli/archive/refs/tags/2.30.0.tar.gz"
+  sha256 "a7997a5beeadd5170d9983437f8d1e4f0d631ba62415ee9e681a241ee758dc3d"
   license "Apache-2.0"
   head "https://github.com/aws/aws-cli.git", branch: "v2"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "eda94aeaf1449b56a9046b86eb9e4d40f2fd1274aa6da3997ff1671a111d5afa"
-    sha256 cellar: :any,                 arm64_sequoia: "9de5ef85dea348817edce4e055d5f3b84d89d74a99c0cc08b08c3ee19e9d7914"
-    sha256 cellar: :any,                 arm64_sonoma:  "8706ac47db603cd25726adbf0495ae73773d3866385ac5f494591a6db0a042ca"
-    sha256 cellar: :any,                 arm64_ventura: "a0817084cfbd607f98a70fc0308b92b823cef969b5fa4ef5894f85313662257b"
-    sha256 cellar: :any,                 sonoma:        "443ec8799e6707dc73016713415f9d30ec0c8449ae9459e8730de73ccef6096c"
-    sha256 cellar: :any,                 ventura:       "9b0748be2ed3f14e2fc5315b632f49a268722344bca24966cde2f4f67fc5fe5f"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "f2bb141be044a234be6aa6c34fbab85e4259045a450fbd2a681b87dbbcee93ec"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6d6a3d3f11fc3930ed108c1afdf2457db14de09e748d9872d13c1375d5584d9f"
+    sha256 cellar: :any,                 arm64_tahoe:   "b3fe41e9049f6d0edc611306f3c75c238b47c85c706a824d7e0511ca41f03a3b"
+    sha256 cellar: :any,                 arm64_sequoia: "5fa28cb2848d9a15268fe9ece649be597196d18c9db1d00ed6c3aefb99ca1748"
+    sha256 cellar: :any,                 arm64_sonoma:  "0bf5e0c15cb931fb9cf5548a6d0203426e5a7034d27eccb4dc92203e674f1caf"
+    sha256 cellar: :any,                 arm64_ventura: "789059aa4cc32a1219e915e022a9b497c77002d5bbf78bd2636c6b7bdb1c39eb"
+    sha256 cellar: :any,                 sonoma:        "22682f17c434d7575b94a0dfad6b22463572b69c1e0564be6b70eb5516efe89e"
+    sha256 cellar: :any,                 ventura:       "ce208312a2add629958d0e17fbc142683e4d148679fda969371bb6e71f8fb057"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "f26df5cd156888f1796bfd77db13260d43ba3d1146e7af37938e188a66affdeb"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "11234b347fc4dcaa7ceb9234a8482439b713b2e1fc55081ee99496e73b9fb080"
   end
 
   depends_on "cmake" => :build

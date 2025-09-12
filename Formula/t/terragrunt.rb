@@ -14,6 +14,7 @@ class Terragrunt < Formula
   end
 
   bottle do
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "0638e5fae9e54ebdfd70d3639b1b9a4843e03969defbdebd28fb3baec0eb421b"
     sha256 cellar: :any_skip_relocation, arm64_sequoia: "0638e5fae9e54ebdfd70d3639b1b9a4843e03969defbdebd28fb3baec0eb421b"
     sha256 cellar: :any_skip_relocation, arm64_sonoma:  "0638e5fae9e54ebdfd70d3639b1b9a4843e03969defbdebd28fb3baec0eb421b"
     sha256 cellar: :any_skip_relocation, arm64_ventura: "0638e5fae9e54ebdfd70d3639b1b9a4843e03969defbdebd28fb3baec0eb421b"
