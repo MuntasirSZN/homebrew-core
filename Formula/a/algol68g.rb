@@ -11,6 +11,7 @@ class Algol68g < Formula
   end
 
   bottle do
+    sha256 arm64_tahoe:   "0dfd435a039116f87bda5f972f0d6d4d8045a4bd44b375b34d90d89492759d9e"
     sha256 arm64_sequoia: "7fcaa4ba863f7ec5e10a5d8628603cbe2a2e7ebc52a531273198bb86cf3e6e7b"
     sha256 arm64_sonoma:  "3140406b51c78466c706146c020289775669c4b82f3d2778744c112a3dd94932"
     sha256 sonoma:        "e851dd4af5934f7d542b1b0529e98822c6ddb92a9e9c6d0da99b9322379d28fd"

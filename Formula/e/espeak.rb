@@ -51,11 +51,20 @@ class Espeak < Formula
         inreplace "speech.h", "#define USE_ASYNC", "//#define USE_ASYNC"
       end
 
-      system "make", "speak", "DATADIR=#{share}/espeak-data", "PREFIX=#{prefix}"
+      cxxflags = []
+      # Workaround for newer Clang
+      cxxflags << "-Wno-c++11-narrowing" if DevelopmentTools.clang_build_version >= 1403
+
+      make_args = %W[
+        DATADIR=#{share}/espeak-data
+        PREFIX=#{prefix}
+        CXXFLAGS=#{cxxflags.join(" ")}
+      ]
+      system "make", "speak", *make_args
       bin.install "speak" => "espeak"
-      system "make", "libespeak.a", "DATADIR=#{share}/espeak-data", "PREFIX=#{prefix}"
+      system "make", "libespeak.a", *make_args
       lib.install "libespeak.a"
-      system "make", "libespeak.so", "DATADIR=#{share}/espeak-data", "PREFIX=#{prefix}"
+      system "make", "libespeak.so", *make_args
       # macOS does not use the convention libraryname.so.X.Y.Z. macOS uses the convention libraryname.X.dylib
       # See https://stackoverflow.com/questions/4580789/ld-unknown-option-soname-on-os-x/32280483#32280483
       libespeak = shared_library("libespeak", "1.#{version.major_minor}")

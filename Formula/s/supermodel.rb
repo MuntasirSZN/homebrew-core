@@ -1,11 +1,12 @@
 class Supermodel < Formula
   desc "Sega Model 3 arcade emulator"
-  homepage "https://www.supermodel3.com/"
+  homepage "https://github.com/trzy/Supermodel"
   license "GPL-3.0-or-later"
   revision 1
 
   stable do
-    url "https://www.supermodel3.com/Files/Supermodel_0.2a_Src.zip"
+    # Homepage is down, issue ref: https://github.com/trzy/Supermodel/issues/259
+    url "https://cdn.netbsd.org/pub/pkgsrc/distfiles/Supermodel_0.2a_Src.zip"
     sha256 "ecaf3e7fc466593e02cbf824b722587d295a7189654acb8206ce433dcff5497b"
 
     depends_on "sdl12-compat"
@@ -59,7 +60,12 @@ class Supermodel < Formula
         s.gsub! "$(CPPFLAGS)", "$(CPPFLAGS) -std=c++14" if OS.linux?
         # Fix compile with newer Clang.
         if DevelopmentTools.clang_build_version >= 1403
-          s.gsub!(/^COMPILER_FLAGS = /, "\\0 -Wno-implicit-function-declaration ")
+          cxxflags = %w[
+            -Wno-implicit-function-declaration
+            -Wno-reserved-user-defined-literal
+            -Wno-c++11-narrowing
+          ]
+          s.gsub!(/^COMPILER_FLAGS = /, "\\0#{cxxflags.join(" ")} ")
         end
       end
       # Use /usr/local/var/supermodel for saving runtime files

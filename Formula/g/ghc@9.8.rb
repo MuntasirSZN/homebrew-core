@@ -115,7 +115,7 @@ class GhcAT98 < Formula
 
     # Workaround for https://gitlab.haskell.org/ghc/ghc/-/issues/26166
     if DevelopmentTools.ld64_version == "1221.4"
-      inreplace "rts/rts.cabal", /("-Wl,-undefined,dynamic_lookup)"/, "\\1,-ld_classic\""
+      inreplace "rts/rts.cabal.in", /("-Wl,-undefined,dynamic_lookup)"/, "\\1,-ld_classic\""
     end
 
     binary = buildpath/"binary"

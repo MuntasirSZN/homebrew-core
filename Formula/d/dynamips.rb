@@ -47,6 +47,10 @@ class Dynamips < Formula
       "-DLIBELF_INCLUDE_DIRS=#{Formula["elfutils"].opt_include}"
     end
 
+    # Workaround to build with CMake 4
+    cmake_args << "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+    odie "Remove CMake workaround!" if version > "0.2.23"
+
     system "cmake", "-S", ".", "-B", "build", *cmake_args, *std_cmake_args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
