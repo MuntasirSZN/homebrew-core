@@ -30,6 +30,12 @@ class LibxmlxxAT5 < Formula
 
   uses_from_macos "libxml2"
 
+  # Fix naming clash with libxml macro
+  patch do
+    url "https://github.com/libxmlplusplus/libxmlplusplus/commit/662ee970644b381720d8750b07844745b78782e2.patch?full_index=1"
+    sha256 "459dfc7a45e19d8b2ca49d4a8db982ba46cbad9384a82218f43e61fb1bfc5182"
+  end
+
   def install
     system "meson", "setup", "build", *std_meson_args
     system "meson", "compile", "-C", "build", "--verbose"

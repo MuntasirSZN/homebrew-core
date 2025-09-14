@@ -18,6 +18,7 @@ class PinentryMac < Formula
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
+  depends_on "gettext" => :build
   depends_on "libtool" => :build
   depends_on xcode: :build # for ibtool
   depends_on "libassuan"
@@ -25,6 +26,8 @@ class PinentryMac < Formula
   depends_on :macos
 
   def install
+    ENV.append_path "ACLOCAL_PATH", Formula["gettext"].pkgshare/"m4"
+
     system "./autogen.sh"
     system "./configure", "--disable-doc",
                           "--disable-ncurses",

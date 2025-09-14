@@ -54,7 +54,7 @@ class Unac < Formula
   end
 
   def install
-    ENV["ACLOCAL_PATH"] = Formula["gettext"].pkgshare/"m4"
+    ENV.append_path "ACLOCAL_PATH", Formula["gettext"].pkgshare/"m4"
 
     touch "config.rpath"
     inreplace "autogen.sh", "libtool", "glibtool"

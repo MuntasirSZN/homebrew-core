@@ -1,7 +1,7 @@
 class Libowfat < Formula
   desc "Reimplements libdjb"
-  homepage "https://www.fefe.de/libowfat/"
-  url "https://www.fefe.de/libowfat/libowfat-0.34.tar.xz"
+  homepage "http://www.fefe.de/libowfat/"
+  url "http://www.fefe.de/libowfat/libowfat-0.34.tar.xz"
   sha256 "d4330d373ac9581b397bc24a22ad1f7f5d58a7fe36d9d239fe352ceffc5d304b"
   license "GPL-2.0-only"
   head ":pserver:cvs:@cvs.fefe.de:/cvs", using: :cvs

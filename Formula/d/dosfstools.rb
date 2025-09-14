@@ -42,7 +42,7 @@ class Dosfstools < Formula
 
   def install
     # Workaround for https://github.com/dosfstools/dosfstools/pull/218
-    ENV["ACLOCAL_PATH"] = Formula["gettext"].pkgshare/"m4"
+    ENV.append_path "ACLOCAL_PATH", Formula["gettext"].pkgshare/"m4"
 
     system "autoreconf", "--force", "--install", "--verbose"
     system "./configure", "--enable-compat-symlinks",
