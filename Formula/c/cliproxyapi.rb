@@ -1,17 +1,17 @@
 class Cliproxyapi < Formula
   desc "Wrap Gemini CLI, Codex, Claude Code, Qwen Code as an API service"
   homepage "https://github.com/router-for-me/CLIProxyAPI"
-  url "https://github.com/router-for-me/CLIProxyAPI/archive/refs/tags/v6.2.14.tar.gz"
-  sha256 "c4383c3cbda2cd2262c95005e9238d8268c17353b26fdb0fbec0b093716579ea"
+  url "https://github.com/router-for-me/CLIProxyAPI/archive/refs/tags/v6.2.16.tar.gz"
+  sha256 "2745a2704774b08162c605091f5ec6089c84f196b6e10794c2056b023a5b0a5e"
   license "MIT"
 
   bottle do
-    sha256                               arm64_tahoe:   "68605004e42b7f8067150f240c80715375e24dfb8c59700e9f9b74916d37795f"
-    sha256                               arm64_sequoia: "68605004e42b7f8067150f240c80715375e24dfb8c59700e9f9b74916d37795f"
-    sha256                               arm64_sonoma:  "68605004e42b7f8067150f240c80715375e24dfb8c59700e9f9b74916d37795f"
-    sha256 cellar: :any_skip_relocation, sonoma:        "eb2c269975750eacbe7430f4cfbd5533798fcdffb968fb5b883c82c9aab36ec2"
-    sha256                               arm64_linux:   "1dcedd45e6acd0d0915e95e0223868918b45e9204ac454139a8f40d88ff559ce"
-    sha256                               x86_64_linux:  "54c73d359fa77206192e095852a510cafcddbf86766231661289976ae24f8cb8"
+    sha256                               arm64_tahoe:   "15b767ad4e85cab8fcc236fff5b6a495934dfffb25e0aa9c9b68f690339cf77a"
+    sha256                               arm64_sequoia: "15b767ad4e85cab8fcc236fff5b6a495934dfffb25e0aa9c9b68f690339cf77a"
+    sha256                               arm64_sonoma:  "15b767ad4e85cab8fcc236fff5b6a495934dfffb25e0aa9c9b68f690339cf77a"
+    sha256 cellar: :any_skip_relocation, sonoma:        "c7f118741c206f6a79bd9c7392a571a5fdaedce3cc733aecf62dadc95618ddaf"
+    sha256                               arm64_linux:   "477ab8d1acd907fc451a28e6a64e87d9fbd2effc8662565cbd009adfbbcb816f"
+    sha256                               x86_64_linux:  "641792268aca688bc5a1542a10c6f6f40f3f69405601f71e43299dc8f22050d5"
   end
 
   depends_on "go" => :build

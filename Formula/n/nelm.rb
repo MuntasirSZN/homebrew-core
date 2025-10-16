@@ -1,18 +1,18 @@
 class Nelm < Formula
   desc "Kubernetes deployment tool that manages and deploys Helm Charts"
   homepage "https://github.com/werf/nelm"
-  url "https://github.com/werf/nelm/archive/refs/tags/v1.14.0.tar.gz"
-  sha256 "50e75ffea982dd37894155c637b767a0f682f02ec9f3b5330ca320c980ba5119"
+  url "https://github.com/werf/nelm/archive/refs/tags/v1.14.1.tar.gz"
+  sha256 "a084734d4d7624f6334b0681a5ba676a328f2d2270268ddb4eab80ed5e2977aa"
   license "Apache-2.0"
   head "https://github.com/werf/nelm.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "e4f4b2552238a1553cfc86ca81324fe9320680a11232c0557a4f1d635cd263ee"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "38f05e934fc6d0967ac7e3ee4136baaa18c806c26a6e67ff2bdf868d69a68ce4"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "9837bfec784dca6beca864b42e7a75ba89b3910a69f01e0d882bbbd8b4a5f3cd"
-    sha256 cellar: :any_skip_relocation, sonoma:        "80758387bae101ae28f971e2215158d500e6ef427309efda808966f69d971db4"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "7b15364b36cae1daa0665f35b0c4696c30b92aad60c9ca0d125904f3e0c4d668"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "759c6753717301a0a1f5689bdf1af65f4c0ab7855cbbc2d721a72390d2620c68"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "06f45382c6afa6b8bb2ca67e897cc71f46d1a79caf7cc4897d9fc9a13462cc00"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "997b7c992fa261cb6bc3e8c8d2feffd0ed8ef9ca5f4792b91094462e8ae202ee"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "2216ad1021aa908ce3322740e263eeda971e1b57bb8d02fa8fbf6dc33c6591a8"
+    sha256 cellar: :any_skip_relocation, sonoma:        "2c5ee59c214780137cdc8e5fb0e9122385a3287ffe18625c8230a64c82b084c6"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "03e3ed4236097a91bae83135dba4a20b34301633038e05df06c7612304011452"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f2f66bc5b71e2f86acb822e3e299607c0e435dd0480e468d04de6fb822275234"
   end
 
   depends_on "go" => :build
