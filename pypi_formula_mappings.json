@@ -526,7 +526,7 @@
   },
   "jinja2-cli": "jinja2-cli[yaml,toml,xml]",
   "jiratui": {
-    "exclude_packages": ["certifi", "cryptography"]
+    "exclude_packages": ["certifi", "cryptography", "pillow"]
   },
   "jrnl": {
     "exclude_packages": ["cryptography"]
