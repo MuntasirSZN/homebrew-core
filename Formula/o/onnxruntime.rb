@@ -1,10 +1,10 @@
 class Onnxruntime < Formula
   desc "Cross-platform, high performance scoring engine for ML models"
   homepage "https://github.com/microsoft/onnxruntime"
-  url "https://github.com/microsoft/onnxruntime/archive/refs/tags/v1.29.1.tar.gz"
-  sha256 "aba6ff915ffa3689af9bd6a84102a221ad35427e602f22bb18ae8323997d0f0d"
+  url "https://github.com/microsoft/onnxruntime/archive/refs/tags/v1.30.0.tar.gz"
+  sha256 "f6681ecbddf53898adf0cc9e8e9e84657485b84d2eca3c8aa353de6d7dd417ef"
   license "MIT"
-  compatibility_version 8
+  compatibility_version 9
 
   livecheck do
     url :stable
@@ -46,9 +46,9 @@ class Onnxruntime < Formula
   end
 
   resource "pytorch_cpuinfo" do
-    url "https://github.com/pytorch/cpuinfo/archive/4628dc060ce4e82345dc166bbac875609db4ff69.tar.gz"
-    version "4628dc060ce4e82345dc166bbac875609db4ff69"
-    sha256 "a550205e891f9f1982044a306cb54556347645cba129af34cd907160f83bd0f1"
+    url "https://github.com/pytorch/cpuinfo/archive/66ee79c038d70dad9f08705b2c9b3e58f6d8f512.tar.gz"
+    version "66ee79c038d70dad9f08705b2c9b3e58f6d8f512"
+    sha256 "e3d09aa27ec50da6310da45d1ec6b2e903c367a1455d8ee350bda12b9dedf556"
 
     livecheck do
       url "https://raw.githubusercontent.com/microsoft/onnxruntime/refs/tags/v#{LATEST_VERSION}/cmake/deps.txt"
@@ -87,15 +87,6 @@ class Onnxruntime < Formula
       regex(%r{^psimd;.*/(\h+)\.zip}i)
     end
   end
-
-  # Apply Fedora's workaround[^1] to allow `onnxruntime` to use `onnx` built without
-  # ONNX_DISABLE_STATIC_REGISTRATION[^2]. We can't use this option as it will
-  # break functionality for any dependents/users expecting the default behavior.
-  # The main alternative is to build a bundled copy of `onnx`.
-  #
-  # [^1]: https://src.fedoraproject.org/rpms/onnxruntime/blob/rawhide/f/0013-onnx-onnxruntime-fix.patch
-  # [^2]: https://github.com/microsoft/onnxruntime/issues/8556#issuecomment-1006091632
-  patch :DATA
 
   def install
     ENV.runtime_cpu_detection
@@ -208,32 +199,3 @@ class Onnxruntime < Formula
     assert_equal version.to_s, output_lines.join
   end
 end
-
-__END__
-diff --git a/onnxruntime/core/session/onnxruntime_c_api.cc b/onnxruntime/core/session/onnxruntime_c_api.cc
-index b60d97e38f..6951642edb 100644
---- a/onnxruntime/core/session/onnxruntime_c_api.cc
-+++ b/onnxruntime/core/session/onnxruntime_c_api.cc
-@@ -45,6 +45,8 @@
- #include "core/session/ort_env.h"
- #include "core/session/utils.h"
- 
-+#include "onnx/onnxruntime_fix.h"
-+
- #if defined(USE_CUDA) || defined(USE_CUDA_PROVIDER_INTERFACE)
- #include "core/providers/cuda/cuda_provider_factory.h"
- #include "core/providers/cuda/cuda_execution_provider_info.h"
-@@ -3094,6 +3096,13 @@ ORT_API(const char*, OrtApis::GetBuildInfoString) {
- }
- 
- const OrtApiBase* ORT_API_CALL OrtGetApiBase(void) NO_EXCEPTION {
-+  class RunONNXRuntimeFix {
-+   public:
-+    RunONNXRuntimeFix() {
-+      onnx::ONNXRuntimeFix::disableStaticRegistration();
-+    }
-+  };
-+  static RunONNXRuntimeFix runONNXRuntimeFix;
-   return &ort_api_base;
- }
-
