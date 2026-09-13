@@ -37,6 +37,12 @@ class Libxspf < Formula
   end
 
   def install
+    # src/XspfReader.cpp:65:3: error: uriparser 0.7.2 or later is required
+    # https://sourceforge.net/p/libspiff/bugs/6/
+    inreplace "src/XspfReader.cpp",
+              "#if (URI_VER_MINOR < 7) || ((URI_VER_MINOR == 7) && (URI_VER_RELEASE < 2))",
+              "#if (URI_VER_MAJOR == 0) && ((URI_VER_MINOR < 7) || ((URI_VER_MINOR == 7) && (URI_VER_RELEASE < 2)))"
+
     system "./configure", *std_configure_args
     system "make", "install"
   end
