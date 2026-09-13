@@ -25,10 +25,12 @@ class Libjuice < Formula
   test do
     (testpath/"test.c").write <<~C
       #include <stdio.h>
+      #include <string.h>
       #include "juice/juice.h"
 
       int main() {
           juice_config_t config;
+          memset(&config, 0, sizeof(config));
 
           config.stun_server_host = "stun.l.google.com";
           config.stun_server_port = 19302;
@@ -41,6 +43,8 @@ class Libjuice < Formula
           config.cb_recv = NULL;
 
           juice_agent_t *agent = juice_create(&config);
+          if (agent == NULL)
+              return 1;
           printf("Successfully created a juice agent\\n");
 
           juice_destroy(agent);
