@@ -33,7 +33,7 @@ class Lc0 < Formula
   # We use "753723" network with 15 blocks x 192 filters (from release notes)
   # Downloaded from https://training.lczero.org/networks/?show_all=0
   resource "network" do
-    url "https://training.lczero.org/get_network?sha=3e3444370b9fe413244fdc79671a490e19b93d3cca1669710ffeac890493d198", using: :nounzip
+    url "https://storage.lczero.org/files/networks/3e3444370b9fe413244fdc79671a490e19b93d3cca1669710ffeac890493d198", using: :nounzip
     sha256 "ca9a751e614cc753cb38aee247972558cf4dc9d82c5d9e13f2f1f464e350ec23"
   end
 
